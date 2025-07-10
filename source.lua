@@ -6698,17 +6698,17 @@ end
 
 if isStudio then
 	local Window = BlueRock:CreateWindow({
-		Name = "Client - BlueRock Hub | Blade Ball",
-		Subtitle = "Welcome!",
-		LogoID = "107463438277691",
+		Name = "Nebula Client - BlueRock Hub | Blade Ball",
+		Subtitle = "by Nebula Softworks",
+		LogoID = "123795201100198",
 		LoadingEnabled = true,
 		LoadingTitle = "Nebula Client (BlueRock Hub)",
 		LoadingSubtitle = "Loading script for Blade Ball",
 		KeySystem = true,
 		KeySettings = {
-			Title = "Client | Key System",
+			Title = "Nebula Client | Key System",
 			Subtitle = "Blade Ball",
-			Note = "Please Enter Your Key To Use Client",
+			Note = "Please Enter Your Key To Use Nebula Client",
 			FileName = "Key", -- the name of the key file. this will be saved in ur RootFolder. However, if you don't have one, it'll save in ur config folder instead
 			SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
 			Key = {"Example Key"}, -- List of keys that will be accepted by the system, please use a system like Pelican or Luarmor that provide key strings based on your HWID since putting a simple string is very easy to bypass

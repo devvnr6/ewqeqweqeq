@@ -1,6 +1,6 @@
-local Release = "First Release"
+local Release = "Prerelease Beta 6.1"
 
-local BlueRock = { Folder = "BlueRock", Options = {}, ThemeGradient = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(117, 164, 206)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(123, 201, 201)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(224, 138, 175))} }
+local BlueLock = { Folder = "BlueLock", Options = {}, ThemeGradient = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(117, 164, 206)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(123, 201, 201)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(224, 138, 175))} }
 
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -1606,7 +1606,7 @@ local function BlurModule(Frame)
 	local MTREL = "Glass"
 	local binds = {}
 	local root = Instance.new('Folder', camera)
-	root.Name = 'BlueRockBlur'
+	root.Name = 'BlueLockBlur'
 
 	local gTokenMH = 99999999
 	local gToken = math.random(1, gTokenMH)
@@ -1809,7 +1809,7 @@ local function unpackt(array : table)
 end
 
 -- Interface Management
-local BlueRockUI = isStudio and script.Parent:WaitForChild("BlueRock UI") or game:GetObjects("rbxassetid://86467455075715")[1]
+local BlueLockUI = isStudio and script.Parent:WaitForChild("BlueLock UI") or game:GetObjects("rbxassetid://86467455075715")[1]
 
 local SizeBleh = nil
 
@@ -1818,7 +1818,7 @@ local function Hide(Window, bind, notif)
 	bind = string.split(tostring(bind), "Enum.KeyCode.")
 	bind = bind[2]
 	if notif then
-		BlueRock:Notification({Title = "Interface Hidden", Content = "The interface has been hidden, you may reopen the interface by Pressing the UI Bind In Settings ("..tostring(bind)..")", Icon = "visibility_off"})
+		BlueLock:Notification({Title = "Interface Hidden", Content = "The interface has been hidden, you may reopen the interface by Pressing the UI Bind In Settings ("..tostring(bind)..")", Icon = "visibility_off"})
 	end
 	tween(Window, {BackgroundTransparency = 1})
 	tween(Window.Elements, {BackgroundTransparency = 1})
@@ -1855,49 +1855,49 @@ end
 
 
 if gethui then
-	BlueRockUI.Parent = gethui()
+	BlueLockUI.Parent = gethui()
 elseif syn and syn.protect_gui then 
-	syn.protect_gui(BlueRockUI)
-	BlueRockUI.Parent = CoreGui
+	syn.protect_gui(BlueLockUI)
+	BlueLockUI.Parent = CoreGui
 elseif not isStudio and CoreGui:FindFirstChild("RobloxGui") then
-	BlueRockUI.Parent = CoreGui:FindFirstChild("RobloxGui")
+	BlueLockUI.Parent = CoreGui:FindFirstChild("RobloxGui")
 elseif not isStudio then
-	BlueRockUI.Parent = CoreGui
+	BlueLockUI.Parent = CoreGui
 end
 
 if gethui then
 	for _, Interface in ipairs(gethui():GetChildren()) do
-		if Interface.Name == BlueRockUI.Name and Interface ~= BlueRockUI then
+		if Interface.Name == BlueLockUI.Name and Interface ~= BlueLockUI then
 			Hide(Interface.SmartWindow)
 			Interface.Enabled = false
-			Interface.Name = "BlueRock-Old"
+			Interface.Name = "BlueLock-Old"
 		end
 	end
 elseif not isStudio then
 	for _, Interface in ipairs(CoreGui:GetChildren()) do
-		if Interface.Name == BlueRockUI.Name and Interface ~= BlueRockUI then
+		if Interface.Name == BlueLockUI.Name and Interface ~= BlueLockUI then
 			Hide(Interface.SmartWindow)
 			Interface.Enabled = false
-			Interface.Name = "BlueRock-Old"
+			Interface.Name = "BlueLock-Old"
 		end
 	end
 end
 
-BlueRockUI.Enabled = false
-BlueRockUI.SmartWindow.Visible = false
-BlueRockUI.Notifications.Template.Visible = false
-BlueRockUI.DisplayOrder = 1000000000
+BlueLockUI.Enabled = false
+BlueLockUI.SmartWindow.Visible = false
+BlueLockUI.Notifications.Template.Visible = false
+BlueLockUI.DisplayOrder = 1000000000
 
-local Main : Frame = BlueRockUI.SmartWindow
+local Main : Frame = BlueLockUI.SmartWindow
 local Dragger = Main.Drag
-local dragBar = BlueRockUI.Drag
+local dragBar = BlueLockUI.Drag
 local dragInteract = dragBar and dragBar.Interact or nil
 local dragBarCosmetic = dragBar and dragBar.Drag or nil
 local Elements = Main.Elements.Interactions
 local LoadingFrame = Main.LoadingFrame
 local Navigation = Main.Navigation
 local Tabs = Navigation.Tabs
-local Notifications = BlueRockUI.Notifications
+local Notifications = BlueLockUI.Notifications
 local KeySystem : Frame = Main.KeySystem
 
 -- local function LoadConfiguration(Configuration, autoload)
@@ -1906,7 +1906,7 @@ local KeySystem : Frame = Main.KeySystem
 -- 	local notified = false
 
 -- 	-- Iterate through current UI elements' flags
--- 	for FlagName, Flag in pairs(BlueRock.Flags) do
+-- 	for FlagName, Flag in pairs(BlueLock.Flags) do
 -- 		local FlagValue = Data[FlagName]
 
 -- 		if FlagValue then
@@ -1923,20 +1923,20 @@ local KeySystem : Frame = Main.KeySystem
 -- 			end)
 -- 		else
 -- 			notified = true
--- 			BlueRock:Notification({Title = "Config Error", Content = "BlueRock was unable to load or find '"..FlagName.. "'' in the current script. Check ".. website .." for help.", Icon = "flag"})
+-- 			BlueLock:Notification({Title = "Config Error", Content = "BlueLock was unable to load or find '"..FlagName.. "'' in the current script. Check ".. website .." for help.", Icon = "flag"})
 -- 		end
 -- 	end
 -- 	if autoload and notified == false then
--- 		BlueRock:Notification({
+-- 		BlueLock:Notification({
 -- 			Title = "Config Autoloaded",
--- 			Content = "The Configuration Has Been Automatically Loaded. Thank You For Using BlueRock Library",
+-- 			Content = "The Configuration Has Been Automatically Loaded. Thank You For Using BlueLock Library",
 -- 			Icon = "file-code-2",
 -- 			ImageSource = "Lucide"
 -- 		})
 -- 	elseif notified == false then
--- 		BlueRock:Notification({
+-- 		BlueLock:Notification({
 -- 			Title = "Config Loaded",
--- 			Content = "The Configuration Has Been Loaded. Thank You For Using BlueRock Library",
+-- 			Content = "The Configuration Has Been Loaded. Thank You For Using BlueLock Library",
 -- 			Icon = "file-code-2",
 -- 			ImageSource = "Lucide"
 -- 		})
@@ -1947,7 +1947,7 @@ local KeySystem : Frame = Main.KeySystem
 
 -- local function SaveConfiguration(Configuration, ConfigFolder, hasRoot)
 -- 	local Data = {}
--- 	for i,v in pairs(BlueRock.Flags) do
+-- 	for i,v in pairs(BlueLock.Flags) do
 -- 		if v.Type == "ColorPicker" then
 -- 			Data[i] = PackColor(v.Color)
 -- 		else
@@ -2052,7 +2052,7 @@ local function Draggable(Bar, Window, enableTaptic, tapticOffset)
 	end)
 end
 
-function BlueRock:Notification(data) -- action e.g open messages
+function BlueLock:Notification(data) -- action e.g open messages
 	task.spawn(function()
 		data = Kwargify({
 			Title = "Missing Title",
@@ -2192,15 +2192,15 @@ local function Minimize(Window)
 end
 
 
-function BlueRock:CreateWindow(WindowSettings)
+function BlueLock:CreateWindow(WindowSettings)
 
 	WindowSettings = Kwargify({
-		Name = "BlueRock UI Example Window",
+		Name = "BlueLock UI Example Window",
 		Subtitle = "",
 		LogoID = "6031097225",
 		LoadingEnabled = true,
 		LoadingTitle = "Welcome to",
-		LoadingSubtitle = "BlueRock",
+		LoadingSubtitle = "BlueLock",
 
 		ConfigSettings = {},
 
@@ -2210,7 +2210,7 @@ function BlueRock:CreateWindow(WindowSettings)
 
 	WindowSettings.ConfigSettings = Kwargify({
 		RootFolder = nil,
-		ConfigFolder = "BlueRock Configurations",
+		ConfigFolder = "BlueLock Configurations",
 	}, WindowSettings.ConfigSettings or {})
 
 	WindowSettings.KeySettings = Kwargify({
@@ -2251,7 +2251,7 @@ function BlueRock:CreateWindow(WindowSettings)
 
 	LoadingFrame.Frame.Frame.Title.Text = WindowSettings.LoadingTitle
 	LoadingFrame.Frame.Frame.Subtitle.Text = WindowSettings.LoadingSubtitle
-	LoadingFrame.Version.Text = LoadingFrame.Frame.Frame.Title.Text == "BlueRock Interface Suite" and Release or "BlueRock UI"
+	LoadingFrame.Version.Text = LoadingFrame.Frame.Frame.Title.Text == "BlueLock Interface Suite" and Release or "BlueLock UI"
 
 	Navigation.Player.icon.ImageLabel.Image = Players:GetUserThumbnailAsync(Players.LocalPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size48x48)
 	Navigation.Player.Namez.Text = Players.LocalPlayer.DisplayName
@@ -2290,7 +2290,7 @@ function BlueRock:CreateWindow(WindowSettings)
 	-- 	LoadAutoLoad(WindowSettings.ConfigSettings.ConfigFolder, WindowSettings.ConfigSettings.RootFolder)
 	-- end)
 
-	BlueRockUI.Enabled = true
+	BlueLockUI.Enabled = true
 
 	BlurModule(Main)
 
@@ -2298,7 +2298,7 @@ function BlueRock:CreateWindow(WindowSettings)
 		local KeySettings = WindowSettings.KeySettings
 		
 		Draggable(Dragger, Main)
-		Draggable(BlueRockUI.MobileSupport, BlueRockUI.MobileSupport)
+		Draggable(BlueLockUI.MobileSupport, BlueLockUI.MobileSupport)
 		if dragBar then Draggable(dragInteract, Main, true, 255) end
 
 		if not WindowSettings.KeySettings then
@@ -2310,11 +2310,11 @@ function BlueRock:CreateWindow(WindowSettings)
 
 		if typeof(WindowSettings.KeySettings.Key) == "string" then WindowSettings.KeySettings.Key = {WindowSettings.KeySettings.Key} end
 
-		local direc = WindowSettings.KeySettings.SaveInRoot and "BlueRock/Configurations/" .. WindowSettings.ConfigSettings.RootFolder .. "/" .. WindowSettings.ConfigSettings.ConfigFolder .. "/Key System/" or "BlueRock/Configurations/" ..  WindowSettings.ConfigSettings.ConfigFolder .. "/Key System/"
+		local direc = WindowSettings.KeySettings.SaveInRoot and "BlueLock/Configurations/" .. WindowSettings.ConfigSettings.RootFolder .. "/" .. WindowSettings.ConfigSettings.ConfigFolder .. "/Key System/" or "BlueLock/Configurations/" ..  WindowSettings.ConfigSettings.ConfigFolder .. "/Key System/"
 
-		if isfile and isfile(direc .. WindowSettings.KeySettings.FileName .. ".BlueRock") then
+		if isfile and isfile(direc .. WindowSettings.KeySettings.FileName .. ".BlueLock") then
 			for i, Key in ipairs(WindowSettings.KeySettings.Key) do
-				if string.find(readfile(direc .. WindowSettings.KeySettings.FileName .. ".BlueRock"), Key) then
+				if string.find(readfile(direc .. WindowSettings.KeySettings.FileName .. ".BlueLock"), Key) then
 					Passthrough = true
 					break
 				end
@@ -2398,9 +2398,9 @@ function BlueRock:CreateWindow(WindowSettings)
 					KeySystem.Visible = false
 					if WindowSettings.KeySettings.SaveKey then
 						if writefile then
-							writefile(direc .. WindowSettings.KeySettings.FileName .. ".BlueRock", FoundKey)
+							writefile(direc .. WindowSettings.KeySettings.FileName .. ".BlueLock", FoundKey)
 						end
-						BlueRock:Notification({Title = "Key System", Content = "The key for this script has been saved successfully.", Icon = "lock_open"})
+						BlueLock:Notification({Title = "Key System", Content = "The key for this script has been saved successfully.", Icon = "lock_open"})
 					end
 				else
 					if AttemptsRemaining == 0 then
@@ -2417,7 +2417,7 @@ function BlueRock:CreateWindow(WindowSettings)
 
 			KeySystem.Close.MouseButton1Click:Connect(function()
 				
-				BlueRock:Destroy()
+				BlueLock:Destroy()
 			end)
 		end
 	end
@@ -2459,7 +2459,7 @@ function BlueRock:CreateWindow(WindowSettings)
 	LoadingFrame.Visible = false
 
 	Draggable(Dragger, Main)
-	Draggable(BlueRockUI.MobileSupport, BlueRockUI.MobileSupport)
+	Draggable(BlueLockUI.MobileSupport, BlueLockUI.MobileSupport)
 	if dragBar then Draggable(dragInteract, Main, true, 255) end
 
 	Elements.Template.LayoutOrder = 1000000000
@@ -2522,7 +2522,7 @@ function BlueRock:CreateWindow(WindowSettings)
 
 		HomeTabPage.detailsholder.dashboard.Client.Title.Text = (isStudio and "Debugging (Studio)" or identifyexecutor()) or "Your Executor Does Not Support identifyexecutor."
 		for i,v in pairs(HomeTabSettings.SupportedExecutors) do
-			if isStudio then HomeTabPage.detailsholder.dashboard.Client.Subtitle.Text = "BlueRock Interface Suite - Debugging Mode" break end
+			if isStudio then HomeTabPage.detailsholder.dashboard.Client.Subtitle.Text = "BlueLock Interface Suite - Debugging Mode" break end
 			if v == identifyexecutor() then
 				HomeTabPage.detailsholder.dashboard.Client.Subtitle.Text = "Your Executor Supports This Script."
 				break
@@ -2801,7 +2801,7 @@ function BlueRock:CreateWindow(WindowSettings)
 						TweenService:Create(Button, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 						TweenService:Create(Button.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 						Button.Title.Text = "Callback Error"
-						print("BlueRock Interface Suite | "..ButtonSettings.Name.." Callback Error " ..tostring(Response))
+						print("BlueLock Interface Suite | "..ButtonSettings.Name.." Callback Error " ..tostring(Response))
 						wait(0.5)
 						Button.Title.Text = ButtonSettings.Name
 						TweenService:Create(Button, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -3065,7 +3065,7 @@ function BlueRock:CreateWindow(WindowSettings)
 									TweenService:Create(Slider, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 									TweenService:Create(Slider.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 									Slider.Title.Text = "Callback Error"
-									print("BlueRock Interface Suite | "..SliderSettings.Name.." Callback Error " ..tostring(Response))
+									print("BlueLock Interface Suite | "..SliderSettings.Name.." Callback Error " ..tostring(Response))
 									wait(0.5)
 									Slider.Title.Text = SliderSettings.Name
 									TweenService:Create(Slider, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -3075,7 +3075,7 @@ function BlueRock:CreateWindow(WindowSettings)
 
 								SliderSettings.CurrentValue = NewValue
 								SliderV.CurrentValue = SliderSettings.CurrentValue
-								-- BlueRock.Flags[SliderSettings.Flag] = SliderSettings
+								-- BlueLock.Flags[SliderSettings.Flag] = SliderSettings
 							end
 						else
 							TweenService:Create(Slider.Main.Progress, TweenInfo.new(0.1, Enum.EasingStyle.Back, Enum.EasingDirection.In, 0, false), {Size = UDim2.new(0, Location - Slider.Main.AbsolutePosition.X > 5 and Location - Slider.Main.AbsolutePosition.X or 5, 1, 0)}):Play()
@@ -3098,7 +3098,7 @@ function BlueRock:CreateWindow(WindowSettings)
 						TweenService:Create(Slider, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 						TweenService:Create(Slider.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 						Slider.Title.Text = "Callback Error"
-						print("BlueRock Interface Suite | "..SliderSettings.Name.." Callback Error " ..tostring(Response))
+						print("BlueLock Interface Suite | "..SliderSettings.Name.." Callback Error " ..tostring(Response))
 						wait(0.5)
 						Slider.Title.Text = SliderSettings.Name
 						TweenService:Create(Slider, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -3108,7 +3108,7 @@ function BlueRock:CreateWindow(WindowSettings)
 
 					SliderSettings.CurrentValue = NewVal
 					SliderV.CurrentValue = SliderSettings.CurrentValue
-					-- BlueRock.Flags[SliderSettings.Flag] = SliderSettings
+					-- BlueLock.Flags[SliderSettings.Flag] = SliderSettings
 
 				end
 
@@ -3143,7 +3143,7 @@ function BlueRock:CreateWindow(WindowSettings)
 
 					Set()
 
-					-- BlueRock.Flags[SliderSettings.Flag] = SliderSettings
+					-- BlueLock.Flags[SliderSettings.Flag] = SliderSettings
 				end
 
 				function SliderV:Destroy()
@@ -3152,12 +3152,12 @@ function BlueRock:CreateWindow(WindowSettings)
 				end
 
 				if Flag then
-					BlueRock.Options[Flag] = SliderV
+					BlueLock.Options[Flag] = SliderV
 				end
 
-				BlueRockUI.ThemeRemote:GetPropertyChangedSignal("Value"):Connect(function()
-					Slider.Main.color.Color = BlueRock.ThemeGradient
-					Slider.Main.UIStroke.color.Color = BlueRock.ThemeGradient
+				BlueLockUI.ThemeRemote:GetPropertyChangedSignal("Value"):Connect(function()
+					Slider.Main.color.Color = BlueLock.ThemeGradient
+					Slider.Main.UIStroke.color.Color = BlueLock.ThemeGradient
 				end)
 
 				return SliderV
@@ -3243,7 +3243,7 @@ function BlueRock:CreateWindow(WindowSettings)
 						TweenService:Create(Toggle, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 						TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 						Toggle.Title.Text = "Callback Error"
-						print("BlueRock Interface Suite | "..ToggleSettings.Name.." Callback Error " ..tostring(Response))
+						print("BlueLock Interface Suite | "..ToggleSettings.Name.." Callback Error " ..tostring(Response))
 						wait(0.5)
 						Toggle.Title.Text = ToggleSettings.Name
 						TweenService:Create(Toggle, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -3270,7 +3270,7 @@ function BlueRock:CreateWindow(WindowSettings)
 						TweenService:Create(Toggle, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 						TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 						Toggle.Title.Text = "Callback Error"
-						print("BlueRock Interface Suite | "..ToggleSettings.Name.." Callback Error " ..tostring(Response))
+						print("BlueLock Interface Suite | "..ToggleSettings.Name.." Callback Error " ..tostring(Response))
 						wait(0.5)
 						Toggle.Title.Text = ToggleSettings.Name
 						TweenService:Create(Toggle, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -3314,7 +3314,7 @@ function BlueRock:CreateWindow(WindowSettings)
 						TweenService:Create(Toggle, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 						TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
 						Toggle.Title.Text = "Callback Error"
-						print("BlueRock Interface Suite | "..ToggleSettings.Name.." Callback Error " ..tostring(Response))
+						print("BlueLock Interface Suite | "..ToggleSettings.Name.." Callback Error " ..tostring(Response))
 						wait(0.5)
 						Toggle.Title.Text = ToggleSettings.Name
 						TweenService:Create(Toggle, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -3328,13 +3328,13 @@ function BlueRock:CreateWindow(WindowSettings)
 					Toggle:Destroy()
 				end
 
-				BlueRockUI.ThemeRemote:GetPropertyChangedSignal("Value"):Connect(function()
-					Toggle.toggle.color.Color = BlueRock.ThemeGradient
-					Toggle.toggle.UIStroke.color.Color = BlueRock.ThemeGradient
+				BlueLockUI.ThemeRemote:GetPropertyChangedSignal("Value"):Connect(function()
+					Toggle.toggle.color.Color = BlueLock.ThemeGradient
+					Toggle.toggle.UIStroke.color.Color = BlueLock.ThemeGradient
 				end)
 
 				if Flag then
-					BlueRock.Options[Flag] = ToggleV
+					BlueLock.Options[Flag] = ToggleV
 				end
 
 				return ToggleV
@@ -3436,7 +3436,7 @@ function BlueRock:CreateWindow(WindowSettings)
 								TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 								TweenService:Create(Bind.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 								Bind.Title.Text = "Callback Error"
-								print("BlueRock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
+								print("BlueLock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
 								wait(0.5)
 								Bind.Title.Text = BindSettings.Name
 								TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -3465,7 +3465,7 @@ function BlueRock:CreateWindow(WindowSettings)
 								TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 								TweenService:Create(Bind.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 								Bind.Title.Text = "Callback Error"
-								print("BlueRock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
+								print("BlueLock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
 								wait(0.5)
 								Bind.Title.Text = BindSettings.Name
 								TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -3485,7 +3485,7 @@ function BlueRock:CreateWindow(WindowSettings)
 											TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 											TweenService:Create(Bind.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 											Bind.Title.Text = "Callback Error"
-											print("BlueRock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
+											print("BlueLock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
 											wait(0.5)
 											Bind.Title.Text = BindSettings.Name
 											TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -3502,7 +3502,7 @@ function BlueRock:CreateWindow(WindowSettings)
 											TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 											TweenService:Create(Bind.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 											Bind.Title.Text = "Callback Error"
-											print("BlueRock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
+											print("BlueLock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
 											wait(0.5)
 											Bind.Title.Text = BindSettings.Name
 											TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -3552,10 +3552,10 @@ function BlueRock:CreateWindow(WindowSettings)
 				end
 
 				if Flag then
-					BlueRock.Options[Flag] = BindV
+					BlueLock.Options[Flag] = BindV
 				end
 
-				-- BlueRock.Flags[BindSettings.Flag] = BindSettings
+				-- BlueLock.Flags[BindSettings.Flag] = BindSettings
 
 				return BindV
 
@@ -3632,7 +3632,7 @@ function BlueRock:CreateWindow(WindowSettings)
 								TweenService:Create(Input, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 								TweenService:Create(Input.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 								Input.Title.Text = "Callback Error"
-								print("BlueRock Interface Suite | "..InputSettings.Name.." Callback Error " ..tostring(Response))
+								print("BlueLock Interface Suite | "..InputSettings.Name.." Callback Error " ..tostring(Response))
 								wait(0.5)
 								Input.Title.Text = InputSettings.Name
 								TweenService:Create(Input, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -3673,7 +3673,7 @@ function BlueRock:CreateWindow(WindowSettings)
 							TweenService:Create(Input, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 							TweenService:Create(Input.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 							Input.Title.Text = "Callback Error"
-							print("BlueRock Interface Suite | "..InputSettings.Name.." Callback Error " ..tostring(Response))
+							print("BlueLock Interface Suite | "..InputSettings.Name.." Callback Error " ..tostring(Response))
 							wait(0.5)
 							Input.Title.Text = InputSettings.Name
 							TweenService:Create(Input, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -3720,7 +3720,7 @@ function BlueRock:CreateWindow(WindowSettings)
 				end
 
 				if Flag then
-					BlueRock.Options[Flag] = InputV
+					BlueLock.Options[Flag] = InputV
 				end
 
 
@@ -3793,7 +3793,7 @@ function BlueRock:CreateWindow(WindowSettings)
 						TweenService:Create(Dropdown, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 						TweenService:Create(Dropdown.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 						Dropdown.Title.Text = "Callback Error"
-						print("BlueRock Interface Suite | "..DropdownSettings.Name.." Callback Error " ..tostring(Response))
+						print("BlueLock Interface Suite | "..DropdownSettings.Name.." Callback Error " ..tostring(Response))
 						wait(0.5)
 						Dropdown.Title.Text = DropdownSettings.Name
 						TweenService:Create(Dropdown, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -4062,7 +4062,7 @@ function BlueRock:CreateWindow(WindowSettings)
 					end
 					Dropdown.Selected.Text = ""
 
-					-- BlueRock.Flags[DropdownSettings.Flag] = DropdownSettings
+					-- BlueLock.Flags[DropdownSettings.Flag] = DropdownSettings
 
 				end
 
@@ -4072,10 +4072,10 @@ function BlueRock:CreateWindow(WindowSettings)
 				end
 
 				if Flag then
-					BlueRock.Options[Flag] = DropdownV
+					BlueLock.Options[Flag] = DropdownV
 				end
 
-				-- BlueRock.Flags[DropdownSettings.Flag] = DropdownSettings
+				-- BlueLock.Flags[DropdownSettings.Flag] = DropdownSettings
 
 				return DropdownV
 
@@ -4134,7 +4134,7 @@ function BlueRock:CreateWindow(WindowSettings)
 						TweenService:Create(ColorPicker, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 						TweenService:Create(ColorPicker.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 						ColorPicker.Title.Text = "Callback Error"
-						print("BlueRock Interface Suite | "..ColorPickerSettings.Name.." Callback Error " ..tostring(Response))
+						print("BlueLock Interface Suite | "..ColorPickerSettings.Name.." Callback Error " ..tostring(Response))
 						wait(0.5)
 						ColorPicker.Title.Text = ColorPickerSettings.Name
 						TweenService:Create(ColorPicker, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -4321,7 +4321,7 @@ function BlueRock:CreateWindow(WindowSettings)
 				end
 
 				if Flag then
-					BlueRock.Options[Flag] = ColorPickerV
+					BlueLock.Options[Flag] = ColorPickerV
 				end
 
 				SafeCallback(ColorPickerSettings.Color)
@@ -4393,7 +4393,7 @@ function BlueRock:CreateWindow(WindowSettings)
 					TweenService:Create(Button, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 					TweenService:Create(Button.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 					Button.Title.Text = "Callback Error"
-					print("BlueRock Interface Suite | "..ButtonSettings.Name.." Callback Error " ..tostring(Response))
+					print("BlueLock Interface Suite | "..ButtonSettings.Name.." Callback Error " ..tostring(Response))
 					wait(0.5)
 					Button.Title.Text = ButtonSettings.Name
 					TweenService:Create(Button, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -4654,7 +4654,7 @@ function BlueRock:CreateWindow(WindowSettings)
 								TweenService:Create(Slider, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 								TweenService:Create(Slider.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 								Slider.Title.Text = "Callback Error"
-								print("BlueRock Interface Suite | "..SliderSettings.Name.." Callback Error " ..tostring(Response))
+								print("BlueLock Interface Suite | "..SliderSettings.Name.." Callback Error " ..tostring(Response))
 								wait(0.5)
 								Slider.Title.Text = SliderSettings.Name
 								TweenService:Create(Slider, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -4664,7 +4664,7 @@ function BlueRock:CreateWindow(WindowSettings)
 
 							SliderSettings.CurrentValue = NewValue
 							SliderV.CurrentValue = SliderSettings.CurrentValue
-							-- BlueRock.Flags[SliderSettings.Flag] = SliderSettings
+							-- BlueLock.Flags[SliderSettings.Flag] = SliderSettings
 						end
 					else
 						TweenService:Create(Slider.Main.Progress, TweenInfo.new(0.1, Enum.EasingStyle.Back, Enum.EasingDirection.In, 0, false), {Size = UDim2.new(0, Location - Slider.Main.AbsolutePosition.X > 5 and Location - Slider.Main.AbsolutePosition.X or 5, 1, 0)}):Play()
@@ -4687,7 +4687,7 @@ function BlueRock:CreateWindow(WindowSettings)
 					TweenService:Create(Slider, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 					TweenService:Create(Slider.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 					Slider.Title.Text = "Callback Error"
-					print("BlueRock Interface Suite | "..SliderSettings.Name.." Callback Error " ..tostring(Response))
+					print("BlueLock Interface Suite | "..SliderSettings.Name.." Callback Error " ..tostring(Response))
 					wait(0.5)
 					Slider.Title.Text = SliderSettings.Name
 					TweenService:Create(Slider, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -4697,7 +4697,7 @@ function BlueRock:CreateWindow(WindowSettings)
 
 				SliderSettings.CurrentValue = NewVal
 				SliderV.CurrentValue = SliderSettings.CurrentValue
-				-- BlueRock.Flags[SliderSettings.Flag] = SliderSettings
+				-- BlueLock.Flags[SliderSettings.Flag] = SliderSettings
 
 			end
 
@@ -4732,7 +4732,7 @@ function BlueRock:CreateWindow(WindowSettings)
 
 				Set()
 
-				-- BlueRock.Flags[SliderSettings.Flag] = SliderSettings
+				-- BlueLock.Flags[SliderSettings.Flag] = SliderSettings
 			end
 
 			function SliderV:Destroy()
@@ -4741,12 +4741,12 @@ function BlueRock:CreateWindow(WindowSettings)
 			end
 
 			if Flag then
-				BlueRock.Options[Flag] = SliderV
+				BlueLock.Options[Flag] = SliderV
 			end
 
-			BlueRockUI.ThemeRemote:GetPropertyChangedSignal("Value"):Connect(function()
-				Slider.Main.color.Color = BlueRock.ThemeGradient
-				Slider.Main.UIStroke.color.Color = BlueRock.ThemeGradient
+			BlueLockUI.ThemeRemote:GetPropertyChangedSignal("Value"):Connect(function()
+				Slider.Main.color.Color = BlueLock.ThemeGradient
+				Slider.Main.UIStroke.color.Color = BlueLock.ThemeGradient
 			end)
 
 			return SliderV
@@ -4831,7 +4831,7 @@ function BlueRock:CreateWindow(WindowSettings)
 					TweenService:Create(Toggle, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 					TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 					Toggle.Title.Text = "Callback Error"
-					print("BlueRock Interface Suite | "..ToggleSettings.Name.." Callback Error " ..tostring(Response))
+					print("BlueLock Interface Suite | "..ToggleSettings.Name.." Callback Error " ..tostring(Response))
 					wait(0.5)
 					Toggle.Title.Text = ToggleSettings.Name
 					TweenService:Create(Toggle, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -4858,7 +4858,7 @@ function BlueRock:CreateWindow(WindowSettings)
 					TweenService:Create(Toggle, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 					TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 					Toggle.Title.Text = "Callback Error"
-					print("BlueRock Interface Suite | "..ToggleSettings.Name.." Callback Error " ..tostring(Response))
+					print("BlueLock Interface Suite | "..ToggleSettings.Name.." Callback Error " ..tostring(Response))
 					wait(0.5)
 					Toggle.Title.Text = ToggleSettings.Name
 					TweenService:Create(Toggle, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -4902,7 +4902,7 @@ function BlueRock:CreateWindow(WindowSettings)
 					TweenService:Create(Toggle, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 					TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
 					Toggle.Title.Text = "Callback Error"
-					print("BlueRock Interface Suite | "..ToggleSettings.Name.." Callback Error " ..tostring(Response))
+					print("BlueLock Interface Suite | "..ToggleSettings.Name.." Callback Error " ..tostring(Response))
 					wait(0.5)
 					Toggle.Title.Text = ToggleSettings.Name
 					TweenService:Create(Toggle, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -4916,13 +4916,13 @@ function BlueRock:CreateWindow(WindowSettings)
 				Toggle:Destroy()
 			end
 
-			BlueRockUI.ThemeRemote:GetPropertyChangedSignal("Value"):Connect(function()
-				Toggle.toggle.color.Color = BlueRock.ThemeGradient
-				Toggle.toggle.UIStroke.color.Color = BlueRock.ThemeGradient
+			BlueLockUI.ThemeRemote:GetPropertyChangedSignal("Value"):Connect(function()
+				Toggle.toggle.color.Color = BlueLock.ThemeGradient
+				Toggle.toggle.UIStroke.color.Color = BlueLock.ThemeGradient
 			end)
 
 			if Flag then
-				BlueRock.Options[Flag] = ToggleV
+				BlueLock.Options[Flag] = ToggleV
 			end
 
 			return ToggleV
@@ -5023,7 +5023,7 @@ function BlueRock:CreateWindow(WindowSettings)
 							TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 							TweenService:Create(Bind.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 							Bind.Title.Text = "Callback Error"
-							print("BlueRock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
+							print("BlueLock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
 							wait(0.5)
 							Bind.Title.Text = BindSettings.Name
 							TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -5052,7 +5052,7 @@ function BlueRock:CreateWindow(WindowSettings)
 							TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 							TweenService:Create(Bind.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 							Bind.Title.Text = "Callback Error"
-							print("BlueRock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
+							print("BlueLock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
 							wait(0.5)
 							Bind.Title.Text = BindSettings.Name
 							TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -5072,7 +5072,7 @@ function BlueRock:CreateWindow(WindowSettings)
 										TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 										TweenService:Create(Bind.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 										Bind.Title.Text = "Callback Error"
-										print("BlueRock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
+										print("BlueLock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
 										wait(0.5)
 										Bind.Title.Text = BindSettings.Name
 										TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -5089,7 +5089,7 @@ function BlueRock:CreateWindow(WindowSettings)
 										TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 										TweenService:Create(Bind.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 										Bind.Title.Text = "Callback Error"
-										print("BlueRock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
+										print("BlueLock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
 										wait(0.5)
 										Bind.Title.Text = BindSettings.Name
 										TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -5139,10 +5139,10 @@ function BlueRock:CreateWindow(WindowSettings)
 			end
 
 			if Flag then
-				BlueRock.Options[Flag] = BindV
+				BlueLock.Options[Flag] = BindV
 			end
 
-			-- BlueRock.Flags[BindSettings.Flag] = BindSettings
+			-- BlueLock.Flags[BindSettings.Flag] = BindSettings
 
 			return BindV
 
@@ -5250,7 +5250,7 @@ function BlueRock:CreateWindow(WindowSettings)
 							TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 							TweenService:Create(Bind.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 							Bind.Title.Text = "Callback Error"
-							print("BlueRock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
+							print("BlueLock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
 							wait(0.5)
 							Bind.Title.Text = BindSettings.Name
 							TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -5270,7 +5270,7 @@ function BlueRock:CreateWindow(WindowSettings)
 										TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 										TweenService:Create(Bind.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 										Bind.Title.Text = "Callback Error"
-										print("BlueRock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
+										print("BlueLock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
 										wait(0.5)
 										Bind.Title.Text = BindSettings.Name
 										TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -5287,7 +5287,7 @@ function BlueRock:CreateWindow(WindowSettings)
 										TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 										TweenService:Create(Bind.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 										Bind.Title.Text = "Callback Error"
-										print("BlueRock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
+										print("BlueLock Interface Suite | "..BindSettings.Name.." Callback Error " ..tostring(Response))
 										wait(0.5)
 										Bind.Title.Text = BindSettings.Name
 										TweenService:Create(Bind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -5327,7 +5327,7 @@ function BlueRock:CreateWindow(WindowSettings)
 				Bind.BindFrame.BindBox.Text = BindSettings.CurrentBind
 				Bind.BindFrame.BindBox.Size = UDim2.new(0, Bind.BindFrame.BindBox.TextBounds.X + 16, 0, 42)
 
-				-- BlueRock.Flags[BindSettings.Flag] = BindSettings
+				-- BlueLock.Flags[BindSettings.Flag] = BindSettings
 
 			end
 
@@ -5336,7 +5336,7 @@ function BlueRock:CreateWindow(WindowSettings)
 				Bind:Destroy()
 			end
 
-			-- BlueRock.Flags[BindSettings.Flag] = BindSettings
+			-- BlueLock.Flags[BindSettings.Flag] = BindSettings
 
 			return BindV
 
@@ -5412,7 +5412,7 @@ function BlueRock:CreateWindow(WindowSettings)
 							TweenService:Create(Input, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 							TweenService:Create(Input.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 							Input.Title.Text = "Callback Error"
-							print("BlueRock Interface Suite | "..InputSettings.Name.." Callback Error " ..tostring(Response))
+							print("BlueLock Interface Suite | "..InputSettings.Name.." Callback Error " ..tostring(Response))
 							wait(0.5)
 							Input.Title.Text = InputSettings.Name
 							TweenService:Create(Input, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -5453,7 +5453,7 @@ function BlueRock:CreateWindow(WindowSettings)
 						TweenService:Create(Input, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 						TweenService:Create(Input.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 						Input.Title.Text = "Callback Error"
-						print("BlueRock Interface Suite | "..InputSettings.Name.." Callback Error " ..tostring(Response))
+						print("BlueLock Interface Suite | "..InputSettings.Name.." Callback Error " ..tostring(Response))
 						wait(0.5)
 						Input.Title.Text = InputSettings.Name
 						TweenService:Create(Input, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -5500,7 +5500,7 @@ function BlueRock:CreateWindow(WindowSettings)
 			end
 
 			if Flag then
-				BlueRock.Options[Flag] = InputV
+				BlueLock.Options[Flag] = InputV
 			end
 
 
@@ -5572,7 +5572,7 @@ function BlueRock:CreateWindow(WindowSettings)
 					TweenService:Create(Dropdown, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 					TweenService:Create(Dropdown.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 					Dropdown.Title.Text = "Callback Error"
-					print("BlueRock Interface Suite | "..DropdownSettings.Name.." Callback Error " ..tostring(Response))
+					print("BlueLock Interface Suite | "..DropdownSettings.Name.." Callback Error " ..tostring(Response))
 					wait(0.5)
 					Dropdown.Title.Text = DropdownSettings.Name
 					TweenService:Create(Dropdown, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -5841,7 +5841,7 @@ function BlueRock:CreateWindow(WindowSettings)
 				end
 				Dropdown.Selected.Text = ""
 
-				-- BlueRock.Flags[DropdownSettings.Flag] = DropdownSettings
+				-- BlueLock.Flags[DropdownSettings.Flag] = DropdownSettings
 
 			end
 
@@ -5851,10 +5851,10 @@ function BlueRock:CreateWindow(WindowSettings)
 			end
 
 			if Flag then
-				BlueRock.Options[Flag] = DropdownV
+				BlueLock.Options[Flag] = DropdownV
 			end
 
-			-- BlueRock.Flags[DropdownSettings.Flag] = DropdownSettings
+			-- BlueLock.Flags[DropdownSettings.Flag] = DropdownSettings
 
 			return DropdownV
 
@@ -5912,7 +5912,7 @@ function BlueRock:CreateWindow(WindowSettings)
 					TweenService:Create(ColorPicker, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
 					TweenService:Create(ColorPicker.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 					ColorPicker.Title.Text = "Callback Error"
-					print("BlueRock Interface Suite | "..ColorPickerSettings.Name.." Callback Error " ..tostring(Response))
+					print("BlueLock Interface Suite | "..ColorPickerSettings.Name.." Callback Error " ..tostring(Response))
 					wait(0.5)
 					ColorPicker.Title.Text = ColorPickerSettings.Name
 					TweenService:Create(ColorPicker, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.5}):Play()
@@ -6099,7 +6099,7 @@ function BlueRock:CreateWindow(WindowSettings)
 			end
 
 			if Flag then
-				BlueRock.Options[Flag] = ColorPickerV
+				BlueLock.Options[Flag] = ColorPickerV
 			end
 
 			SafeCallback(ColorPickerSettings.Color)
@@ -6146,7 +6146,7 @@ function BlueRock:CreateWindow(WindowSettings)
 				Description = "Create a config with all of your current settings.",
 				Callback = function()
 					if not inputPath or string.gsub(inputPath, " ", "") == "" then
-						BlueRock:Notification({
+						BlueLock:Notification({
 							Title = "Interface",
 							Icon = "warning",
 							ImageSource = "Material",
@@ -6155,9 +6155,9 @@ function BlueRock:CreateWindow(WindowSettings)
 						return
 					end
 
-					local success, returned = BlueRock:SaveConfig(inputPath)
+					local success, returned = BlueLock:SaveConfig(inputPath)
 					if not success then
-						BlueRock:Notification({
+						BlueLock:Notification({
 							Title = "Interface",
 							Icon = "error",
 							ImageSource = "Material",
@@ -6165,14 +6165,14 @@ function BlueRock:CreateWindow(WindowSettings)
 						})
 					end
 
-					BlueRock:Notification({
+					BlueLock:Notification({
 						Title = "Interface",
 						Icon = "info",
 						ImageSource = "Material",
 						Content = string.format("Created config %q", inputPath),
 					})
 
-					configSelection:Set({ Options = BlueRock:RefreshConfigList() })
+					configSelection:Set({ Options = BlueLock:RefreshConfigList() })
 				end
 			})
 
@@ -6182,7 +6182,7 @@ function BlueRock:CreateWindow(WindowSettings)
 			configSelection = Tab:CreateDropdown({
 				Name = "Select Config",
 				Description = "Select a config to load your settings on.",
-				Options = BlueRock:RefreshConfigList(),
+				Options = BlueLock:RefreshConfigList(),
 				CurrentOption = {},
 				MultipleOptions = false,
 				SpecialType = nil,
@@ -6195,9 +6195,9 @@ function BlueRock:CreateWindow(WindowSettings)
 				Name = "Load Config",
 				Description = "Load your saved config settings.",
 				Callback = function()
-					local success, returned = BlueRock:LoadConfig(selectedConfig)
+					local success, returned = BlueLock:LoadConfig(selectedConfig)
 					if not success then
-						BlueRock:Notification({
+						BlueLock:Notification({
 							Title = "Interface",
 							Icon = "error",
 							ImageSource = "Material",
@@ -6206,7 +6206,7 @@ function BlueRock:CreateWindow(WindowSettings)
 						return
 					end
 
-					BlueRock:Notification({
+					BlueLock:Notification({
 						Title = "Interface",
 						Icon = "info",
 						ImageSource = "Material",
@@ -6219,9 +6219,9 @@ function BlueRock:CreateWindow(WindowSettings)
 				Name = "Overwrite Config",
 				Description = "Overwrite your current config settings.",
 				Callback = function()
-					local success, returned = BlueRock:SaveConfig(selectedConfig)
+					local success, returned = BlueLock:SaveConfig(selectedConfig)
 					if not success then
-						BlueRock:Notification({
+						BlueLock:Notification({
 							Title = "Interface",
 							Icon = "error",
 							ImageSource = "Material",
@@ -6230,7 +6230,7 @@ function BlueRock:CreateWindow(WindowSettings)
 						return
 					end
 
-					BlueRock:Notification({
+					BlueLock:Notification({
 						Title = "Interface",
 						Icon = "info",
 						ImageSource = "Material",
@@ -6243,7 +6243,7 @@ function BlueRock:CreateWindow(WindowSettings)
 				Name = "Refresh Config List",
 				Description = "Refresh the current config list.",
 				Callback = function()
-					configSelection:Set({ Options = BlueRock:RefreshConfigList() })
+					configSelection:Set({ Options = BlueLock:RefreshConfigList() })
 				end,
 			})
 
@@ -6253,10 +6253,10 @@ function BlueRock:CreateWindow(WindowSettings)
 				Description = "Set a config to auto load setting in your next session.",
 				Callback = function()
 					local name = selectedConfig
-					writefile(BlueRock.Folder .. "/settings/autoload.txt", name)
+					writefile(BlueLock.Folder .. "/settings/autoload.txt", name)
 					loadlabel:Set({ Text = "Current autoload config: " .. name })
 
-					BlueRock:Notification({
+					BlueLock:Notification({
 						Title = "Interface",
 						Icon = "info",
 						ImageSource = "Material",
@@ -6275,10 +6275,10 @@ function BlueRock:CreateWindow(WindowSettings)
 				Description = "Delete The Autoload File",
 				Callback = function()
 					local name = selectedConfig
-					delfile(BlueRock.Folder .. "/settings/autoload.txt")
+					delfile(BlueLock.Folder .. "/settings/autoload.txt")
 					loadlabel:Set({ Text = "None" })
 
-					BlueRock:Notification({
+					BlueLock:Notification({
 						Title = "Interface",
 						Icon = "info",
 						ImageSource = "Material",
@@ -6287,8 +6287,8 @@ function BlueRock:CreateWindow(WindowSettings)
 				end,
 			})
 
-			if isfile(BlueRock.Folder .. "/settings/autoload.txt") then
-				local name = readfile(BlueRock.Folder .. "/settings/autoload.txt")
+			if isfile(BlueLock.Folder .. "/settings/autoload.txt") then
+				local name = readfile(BlueLock.Folder .. "/settings/autoload.txt")
 				loadlabel:Set( { Text = "Current autoload config: " .. name })
 			end     
 		end
@@ -6303,8 +6303,8 @@ function BlueRock:CreateWindow(WindowSettings)
 					}
 				end,
 				Load = function(Flag, data)
-					if BlueRock.Options[Flag] then
-						BlueRock.Options[Flag]:Set({ CurrentValue = data.state })
+					if BlueLock.Options[Flag] then
+						BlueLock.Options[Flag]:Set({ CurrentValue = data.state })
 					end
 				end
 			},
@@ -6317,8 +6317,8 @@ function BlueRock:CreateWindow(WindowSettings)
 					}
 				end,
 				Load = function(Flag, data)
-					if BlueRock.Options[Flag] and data.value then
-						BlueRock.Options[Flag]:Set({ CurrentValue = data.value })
+					if BlueLock.Options[Flag] and data.value then
+						BlueLock.Options[Flag]:Set({ CurrentValue = data.value })
 					end
 				end
 			},
@@ -6331,8 +6331,8 @@ function BlueRock:CreateWindow(WindowSettings)
 					}
 				end,
 				Load = function(Flag, data)
-					if BlueRock.Options[Flag] and data.text and type(data.text) == "string" then
-						BlueRock.Options[Flag]:Set({ CurrentValue = data.text })
+					if BlueLock.Options[Flag] and data.text and type(data.text) == "string" then
+						BlueLock.Options[Flag]:Set({ CurrentValue = data.text })
 					end
 				end
 			},
@@ -6345,8 +6345,8 @@ function BlueRock:CreateWindow(WindowSettings)
 					}
 				end,
 				Load = function(Flag, data)
-					if BlueRock.Options[Flag] and data.value then
-						BlueRock.Options[Flag]:Set({ CurrentOption = data.value })
+					if BlueLock.Options[Flag] and data.value then
+						BlueLock.Options[Flag]:Set({ CurrentOption = data.value })
 					end
 				end
 			},
@@ -6372,8 +6372,8 @@ function BlueRock:CreateWindow(WindowSettings)
 						return Color3.new(r, g, b)
 					end
 
-					if BlueRock.Options[Flag] and data.color then
-						BlueRock.Options[Flag]:Set({Color = HexToColor3(data.color)})
+					if BlueLock.Options[Flag] and data.color then
+						BlueLock.Options[Flag]:Set({Color = HexToColor3(data.color)})
 					end
 				end
 			}
@@ -6394,25 +6394,25 @@ function BlueRock:CreateWindow(WindowSettings)
 			local c1cp = Tab:CreateColorPicker({
 				Name = "Color 1",
 				Color = Color3.fromRGB(117, 164, 206),
-			}, "BlueRockInterfaceSuitePrebuiltCPC1") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			}, "BlueLockInterfaceSuitePrebuiltCPC1") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 
 			local c2cp = Tab:CreateColorPicker({
 				Name = "Color 2",
 				Color = Color3.fromRGB(123, 201, 201),
-			}, "BlueRockInterfaceSuitePrebuiltCPC2")
+			}, "BlueLockInterfaceSuitePrebuiltCPC2")
 
 			local c3cp = Tab:CreateColorPicker({
 				Name = "Color 3",
 				Color = Color3.fromRGB(224, 138, 184),
-			}, "BlueRockInterfaceSuitePrebuiltCPC3") 
+			}, "BlueLockInterfaceSuitePrebuiltCPC3") 
 
 			task.wait(1)
 
 			c1cp:Set({
 				Callback = function(Value)
 					if c2cp and c3cp then
-						BlueRock.ThemeGradient = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Value or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(0.50, c2cp.Color or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(1.00, c3cp.Color or Color3.fromRGB(255,255,255))}
-						BlueRockUI.ThemeRemote.Value = not BlueRockUI.ThemeRemote.Value
+						BlueLock.ThemeGradient = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Value or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(0.50, c2cp.Color or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(1.00, c3cp.Color or Color3.fromRGB(255,255,255))}
+						BlueLockUI.ThemeRemote.Value = not BlueLockUI.ThemeRemote.Value
 					end
 				end
 			})
@@ -6420,8 +6420,8 @@ function BlueRock:CreateWindow(WindowSettings)
 			c2cp:Set({
 				Callback = function(Value)
 					if c1cp and c3cp then
-						BlueRock.ThemeGradient = ColorSequence.new{ColorSequenceKeypoint.new(0.00, c1cp.Color or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(0.50, Value or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(1.00, c3cp.Color or Color3.fromRGB(255,255,255))}
-						BlueRockUI.ThemeRemote.Value = not BlueRockUI.ThemeRemote.Value
+						BlueLock.ThemeGradient = ColorSequence.new{ColorSequenceKeypoint.new(0.00, c1cp.Color or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(0.50, Value or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(1.00, c3cp.Color or Color3.fromRGB(255,255,255))}
+						BlueLockUI.ThemeRemote.Value = not BlueLockUI.ThemeRemote.Value
 					end
 				end
 			})
@@ -6429,8 +6429,8 @@ function BlueRock:CreateWindow(WindowSettings)
 			c3cp:Set({
 				Callback = function(Valuex)
 					if c2cp and c1cp then
-						BlueRock.ThemeGradient = ColorSequence.new{ColorSequenceKeypoint.new(0.00, c1cp.Color or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(0.50, c2cp.Color or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(1.00, Valuex or Color3.fromRGB(255,255,255))}
-						BlueRockUI.ThemeRemote.Value = not BlueRockUI.ThemeRemote.Value
+						BlueLock.ThemeGradient = ColorSequence.new{ColorSequenceKeypoint.new(0.00, c1cp.Color or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(0.50, c2cp.Color or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(1.00, Valuex or Color3.fromRGB(255,255,255))}
+						BlueLockUI.ThemeRemote.Value = not BlueLockUI.ThemeRemote.Value
 					end
 				end
 			})
@@ -6454,8 +6454,8 @@ function BlueRock:CreateWindow(WindowSettings)
 		local function BuildFolderTree()
 			if isStudio then return "Config system unavailable." end
 			local paths = {
-				BlueRock.Folder,
-				BlueRock.Folder .. "/settings"
+				BlueLock.Folder,
+				BlueLock.Folder .. "/settings"
 			}
 
 			for i = 1, #paths do
@@ -6471,9 +6471,9 @@ function BlueRock:CreateWindow(WindowSettings)
 			if isStudio then return "Config system unavailable." end
 
 			if WindowSettings.ConfigSettings.RootFolder ~= nil and WindowSettings.ConfigSettings.RootFolder ~= "" then
-				BlueRock.Folder = WindowSettings.ConfigSettings.RootFolder .. "/" .. WindowSettings.ConfigSettings.ConfigFolder
+				BlueLock.Folder = WindowSettings.ConfigSettings.RootFolder .. "/" .. WindowSettings.ConfigSettings.ConfigFolder
 			else
-				BlueRock.Folder = WindowSettings.ConfigSettings.ConfigFolder
+				BlueLock.Folder = WindowSettings.ConfigSettings.ConfigFolder
 			end
 
 			BuildFolderTree()
@@ -6481,20 +6481,20 @@ function BlueRock:CreateWindow(WindowSettings)
 
 		SetFolder()
 
-		function BlueRock:SaveConfig(Path)
+		function BlueLock:SaveConfig(Path)
 			if isStudio then return "Config system unavailable." end
 
 			if (not Path) then
 				return false, "Please select a config file."
 			end
 
-			local fullPath = BlueRock.Folder .. "/settings/" .. Path .. ".BlueRock"
+			local fullPath = BlueLock.Folder .. "/settings/" .. Path .. ".BlueLock"
 
 			local data = {
 				objects = {}
 			}
 
-			for flag, option in next, BlueRock.Options do
+			for flag, option in next, BlueLock.Options do
 				if not ClassParser[option.Class] then continue end
 				if option.IgnoreConfig then continue end
 
@@ -6510,14 +6510,14 @@ function BlueRock:CreateWindow(WindowSettings)
 			return true
 		end
 
-		function BlueRock:LoadConfig(Path)
+		function BlueLock:LoadConfig(Path)
 			if isStudio then return "Config system unavailable." end
 
 			if (not Path) then
 				return false, "Please select a config file."
 			end
 
-			local file = BlueRock.Folder .. "/settings/" .. Path .. ".BlueRock"
+			local file = BlueLock.Folder .. "/settings/" .. Path .. ".BlueLock"
 			if not isfile(file) then return false, "Invalid file" end
 
 			local success, decoded = pcall(HttpService.JSONDecode, HttpService, readfile(file))
@@ -6534,16 +6534,16 @@ function BlueRock:CreateWindow(WindowSettings)
 			return true
 		end
 
-		function BlueRock:LoadAutoloadConfig()
-			if isfile(BlueRock.Folder .. "/settings/autoload.txt") then
+		function BlueLock:LoadAutoloadConfig()
+			if isfile(BlueLock.Folder .. "/settings/autoload.txt") then
 
 				if isStudio then return "Config system unavailable." end
 
-				local name = readfile(BlueRock.Folder .. "/settings/autoload.txt")
+				local name = readfile(BlueLock.Folder .. "/settings/autoload.txt")
 
-				local success, err = BlueRock:LoadConfig(name)
+				local success, err = BlueLock:LoadConfig(name)
 				if not success then
-					return BlueRock:Notification({
+					return BlueLock:Notification({
 						Title = "Interface",
 						Icon = "sparkle",
 						ImageSource = "Material",
@@ -6551,7 +6551,7 @@ function BlueRock:CreateWindow(WindowSettings)
 					})
 				end
 
-				BlueRock:Notification({
+				BlueLock:Notification({
 					Title = "Interface",
 					Icon = "sparkle",
 					ImageSource = "Material",
@@ -6561,16 +6561,16 @@ function BlueRock:CreateWindow(WindowSettings)
 			end 
 		end
 
-		function BlueRock:RefreshConfigList()
+		function BlueLock:RefreshConfigList()
 			if isStudio then return "Config system unavailable." end
 
-			local list = listfiles(BlueRock.Folder .. "/settings")
+			local list = listfiles(BlueLock.Folder .. "/settings")
 
 			local out = {}
 			for i = 1, #list do
 				local file = list[i]
-				if file:sub(-5) == ".BlueRock" then
-					local pos = file:find(".BlueRock", 1, true)
+				if file:sub(-5) == ".BlueLock" then
+					local pos = file:find(".BlueLock", 1, true)
 					local start = pos
 
 					local char = file:sub(pos, pos)
@@ -6613,7 +6613,7 @@ function BlueRock:CreateWindow(WindowSettings)
 		dragBar.Visible = false
 		Window.State = false
 		if UserInputService.KeyboardEnabled == false then
-			BlueRockUI.MobileSupport.Visible = true
+			BlueLockUI.MobileSupport.Visible = true
 		end
 	end)
 	Main.Controls.Close["MouseEnter"]:Connect(function()
@@ -6628,7 +6628,7 @@ function BlueRock:CreateWindow(WindowSettings)
 		if Window.State then return end
 		if input.KeyCode == Window.Bind then
 			Unhide(Main, Window.CurrentTab)
-			BlueRockUI.MobileSupport.Visible = false
+			BlueLockUI.MobileSupport.Visible = false
 			dragBar.Visible = true
 			Window.State = true
 		end
@@ -6675,17 +6675,17 @@ function BlueRock:CreateWindow(WindowSettings)
 	end)	
 
 
-	BlueRockUI.MobileSupport.Interact.MouseButton1Click:Connect(function()
+	BlueLockUI.MobileSupport.Interact.MouseButton1Click:Connect(function()
 		Unhide(Main, Window.CurrentTab)
 		dragBar.Visible = true
 		Window.State = true
-		BlueRockUI.MobileSupport.Visible = false
+		BlueLockUI.MobileSupport.Visible = false
 	end)
 
 	return Window
 end
 
-function BlueRock:Destroy()
+function BlueLock:Destroy()
 	Main.Visible = false
 	for _, Notification in ipairs(Notifications:GetChildren()) do
 		if Notification.ClassName == "Frame" then
@@ -6693,16 +6693,16 @@ function BlueRock:Destroy()
 			Notification:Destroy()
 		end
 	end
-	BlueRockUI:Destroy()
+	BlueLockUI:Destroy()
 end
 
 if isStudio then
-	local Window = BlueRock:CreateWindow({
-		Name = "Client - BlueRock Hub | Blade Ball",
+	local Window = BlueLock:CreateWindow({
+		Name = "Client - BlueLock Hub | Blade Ball",
 		Subtitle = "Welcome!",
 		LogoID = "107463438277691",
 		LoadingEnabled = true,
-		LoadingTitle = "Nebula Client (BlueRock Hub)",
+		LoadingTitle = "Nebula Client (BlueLock Hub)",
 		LoadingSubtitle = "Loading script for Blade Ball",
 		KeySystem = true,
 		KeySettings = {
@@ -6720,16 +6720,16 @@ if isStudio then
 		}
 	})
 	
-	--[[local Window = BlueRock:CreateWindow({
-		Name = "BlueRock Example Window",
+	--[[local Window = BlueLock:CreateWindow({
+		Name = "BlueLock Example Window",
 		Subtitle = "Test",
 		LogoID = "6031097225",
 		LoadingEnabled = true,
-		LoadingTitle = "BlueRock Interface Suite",
+		LoadingTitle = "BlueLock Interface Suite",
 		LoadingSubtitle = "by Nebula Softworks",
 		KeySystem = true,
 		KeySettings = {
-			Title = "BlueRock Example Key",
+			Title = "BlueLock Example Key",
 			Subtitle = "Key System",
 			Note = "Please Enter Your Key To Use Example Hub",
 			FileName = "Key", -- the name of the key file. this will be saved in ur RootFolder. However, if you don't have one, it'll save in ur config folder instead
@@ -6738,11 +6738,11 @@ if isStudio then
 		}
 	})
 
-	BlueRock:Notification({ 
-		Title = "Welcome to BlueRock",
+	BlueLock:Notification({ 
+		Title = "Welcome to BlueLock",
 		Icon = "sparkle",
 		ImageSource = "Material",
-		Content = "Welcome to the BlueRock Interface Suite. This Is an Amazing Quality Freemium UI Library For Roblox Exploiting Made By Nebula Softworks. BlueRock was Created in hopes of improving the standard of UI Library designs by being the golden standard for it. BlueRock Has Amazing Features like a key system, notification and perfection in aesthetics and design. So, What Are You Waiting For? Start Using BlueRock Today at " .. website
+		Content = "Welcome to the BlueLock Interface Suite. This Is an Amazing Quality Freemium UI Library For Roblox Exploiting Made By Nebula Softworks. BlueLock was Created in hopes of improving the standard of UI Library designs by being the golden standard for it. BlueLock Has Amazing Features like a key system, notification and perfection in aesthetics and design. So, What Are You Waiting For? Start Using BlueLock Today at " .. website
 	})
 
 	local Tabs = {
@@ -6891,7 +6891,7 @@ if isStudio then
 	})
 	Tabs.Main2:CreateDropdown({
 		Name = "Dropdown - Players",
-		Description = "BlueRock's Dropdowns Has a built in Player Dropdown!",
+		Description = "BlueLock's Dropdowns Has a built in Player Dropdown!",
 		Options = {"u can put anything here, it wont be shown anyway"},
 		CurrentOption = {"same here, itll be the first option"},
 		MultipleOptions = false,
@@ -6910,14 +6910,14 @@ end
 
 -- THIS IS THE DEBUG DEMO, ONLY USED WHEN TESTING NEW ELEMENTS AND CODE
 --[[if isStudio then
-    window = BlueRock:CreateWindow({LoadingEnabled = false})
+    window = BlueLock:CreateWindow({LoadingEnabled = false})
     t1 = window:CreateTab()
     t2 = window:CreateTab({ Name = "Tab 2", Icon = "location_searching"})
-    BlueRock:Notification({ 
-        Title = "Welcome to BlueRock",
+    BlueLock:Notification({ 
+        Title = "Welcome to BlueLock",
         Icon = "sparkle",
         ImageSource = "Material",
-        Content = "Welcome to the BlueRock Interface Suite. This Is an Amazing Quality Freemium UI Library For Roblox Exploiting Made By Nebula Softworks. BlueRock was Created in hopes of improving the standard of UI Library designs by being the golden standard for it. BlueRock Has Amazing Features like a key system, notification and perfection in aesthetics and design. So, What Are You Waiting For? Start Using BlueRock Today at " .. website
+        Content = "Welcome to the BlueLock Interface Suite. This Is an Amazing Quality Freemium UI Library For Roblox Exploiting Made By Nebula Softworks. BlueLock was Created in hopes of improving the standard of UI Library designs by being the golden standard for it. BlueLock Has Amazing Features like a key system, notification and perfection in aesthetics and design. So, What Are You Waiting For? Start Using BlueLock Today at " .. website
     })
     t1:CreateSection()
     local btn = t1:CreateButton({Callback = "", Description = "This Is A Description"})
@@ -6929,7 +6929,7 @@ end
     end})
     t2:CreateLabel({Style = 3})
     t1:CreateParagraph({Text = "Single String"})
-    t1:CreateParagraph({Text = "Welcome to the BlueRock Interface Suite. This Is an Amazing Quality Freemium UI Library For Roblox Exploiting Made By Nebula Softworks. BlueRock was Created in hopes of improving the standard of UI Library designs by being the golden standard for it. BlueRock Has Amazing Features like a key system, notification and perfection in aesthetics and design. So, What Are You Waiting For? Start Using BlueRock Today at " .. website})
+    t1:CreateParagraph({Text = "Welcome to the BlueLock Interface Suite. This Is an Amazing Quality Freemium UI Library For Roblox Exploiting Made By Nebula Softworks. BlueLock was Created in hopes of improving the standard of UI Library designs by being the golden standard for it. BlueLock Has Amazing Features like a key system, notification and perfection in aesthetics and design. So, What Are You Waiting For? Start Using BlueLock Today at " .. website})
     s = t2:CreateSlider({ Callback = function(v) print(v) end })	
     t1:CreateButton({ Callback = function()
         s:Set({Name = "new name", Callback = ""})
@@ -6953,4 +6953,4 @@ end
     t1:CreateDropdown({Callback = function(t) print(unpack(t)) end})
     t1:CreateDropdown({Description = "Special Type - Player", Callback = "", SpecialType = "Player"})
 end]]--
-return BlueRock
+return BlueLock
